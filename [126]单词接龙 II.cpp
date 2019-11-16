@@ -6,6 +6,7 @@
 #include <algorithm>
 using namespace std;
 
+/* 超时 */
 class Solution {
 public:
     vector<vector<string>> findLadders(string beginWord, string endWord, vector<string>& wordList) {
