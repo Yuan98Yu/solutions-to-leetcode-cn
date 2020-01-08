@@ -1,6 +1,6 @@
 {
     "python.testing.pytestArgs": [
-        "x64"
+        "Debug"
     ],
     "python.testing.unittestEnabled": false,
     "python.testing.nosetestsEnabled": false,
