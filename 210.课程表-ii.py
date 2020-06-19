@@ -1,20 +1,19 @@
 #
-# @lc app=leetcode.cn id=207 lang=python3
+# @lc app=leetcode.cn id=210 lang=python3
 #
-# [207] 课程表
+# [210] 课程表 II
 #
-
 
 # @lc code=start
 class Solution:
-    def canFinish(self, numCourses: int,
-                  prerequisites: List[List[int]]) -> bool:
+    def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
         indegrees = [0] * numCourses
         adjacency = [list() for _ in range(numCourses)]
         for course, pre_course in prerequisites:
             adjacency[pre_course].append(course)
             indegrees[course] += 1
         
+        ans = list()
         queue = list()
         count = 0
         for course in range(numCourses):
@@ -23,13 +22,13 @@ class Solution:
         
         while queue:
             course = queue.pop()
+            ans.append(course)
             count += 1
             for adj in adjacency[course]:
                 indegrees[adj] -= 1
                 if indegrees[adj] == 0:
                     queue.append(adj)
         
-        return count == numCourses
-
-
+        return ans if count == numCourses else []
 # @lc code=end
+
