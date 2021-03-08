@@ -1,6 +1,6 @@
 /**
-*	ʹ�ü��ϻ�map��ȷ�������ظ��ַ���ʹ��map�ĺô����ܹ������ַ����ַ����ֵ�λ�õ�ӳ��
-*	�����ַ���256������ôʹ��һ��sizeΪ256��������Ϊmap���ɣ������ʹ��hashmap
+*	使用集合或map来确定有无重复字符，使用map的好处是能够建立字符和字符出现的位置的映射
+*	假设字符有256个，那么使用一个size为256的数组作为map即可，否则可使用hashmap
 */
 #include <iostream>
 #include <string>

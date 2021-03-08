@@ -1,4 +1,7 @@
 .vscode
 .pytest_cache
 __pycache__
+
+
 /others
+/test
