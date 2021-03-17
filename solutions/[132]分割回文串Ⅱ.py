@@ -1,9 +1,13 @@
-from typing import *
-
-
 class Solution:
     def minCut(self, s: str) -> int:
         memo = [[None] * len(s) for _ in range(len(s))]
+        for i in range(0, len(s)):
+            memo[i][i] = 0
+        for length in range(2, len(s)+1):
+            for i in range(0, len(s)-length+1):
+                j = i + length - 1
+                if s[i] == s[j] and (length == 2 or memo[i+1][j-1] == 0):
+                    memo[i][j] = 0
 
         def dfs(l, r):
             if l >= r:
@@ -12,21 +16,10 @@ class Solution:
                 return memo[l][r]
 
             memo[l][r] = float('inf')
-            if self._is_palindrome(s, l, r):
-                memo[l][r] = 0
-            else:
-                for mid in range(l+1, r+1):
-                    if self._is_palindrome(s, l, mid-1):
-                        memo[l][r] = min(memo[l][r], 1+ dfs(mid, r))
+            for mid in range(l+1, r+1):
+                if memo[l][mid-1] == 0:
+                    memo[l][r] = min(memo[l][r], 1 + dfs(mid, r))
 
             return memo[l][r]
 
-        return dfs(0, len(s) - 1)
-
-    def _is_palindrome(self, s: str, l: int, r: int):
-        while l <= r:
-            if s[l] != s[r]:
-                return False
-            l += 1
-            r -= 1
-        return True
+        return dfs(0, len(s)-1)
