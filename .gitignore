@@ -1,6 +1,12 @@
 .vscode
+
+# python
 .pytest_cache
 __pycache__
+
+# rust
+target
+cargo.lock
 
 
 /others
